@@ -35,13 +35,13 @@ public class NotificationController {
 		log.info("Notification received at:-" + new Date());
 		if (!secret.equals(this.secret))
         {
-			return new ResponseEntity<HttpStatus>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
 
 		//send the message to the RabbitMQ
 		rabbitMQSender.send(notification);
 		
-		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	
